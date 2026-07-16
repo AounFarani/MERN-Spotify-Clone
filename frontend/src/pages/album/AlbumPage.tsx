@@ -79,9 +79,9 @@ const AlbumPage = () => {
                                 hover:bg-green-400 hover:scale-105 transition-all'
                             >
                                 {isPlaying && currentAlbum?.songs.some((song) => song._id === currentSong?._id) ? (
-                                    <Pause className='h-7 w-7 text-black' />
+                                    <Pause fill="#000" className='h-7 w-7 text-black' />
                                 ) : (
-                                    <Play className='h-7 w-7 text-black' />
+                                    <Play fill="#000" className='h-7 w-7 text-black' />
                                 )}
                             </Button>
                         </div>
@@ -118,7 +118,7 @@ const AlbumPage = () => {
                                                         <span className='group-hover:hidden'>{index + 1}</span>
                                                     )}
                                                     {!isCurrentSong && (
-                                                        <Play className='h-4 w-4 hidden group-hover:block' />
+                                                        <Play fill="#9f9fa9" className='h-4 w-4 hidden group-hover:block' />
                                                     )}
                                                 </div>
 

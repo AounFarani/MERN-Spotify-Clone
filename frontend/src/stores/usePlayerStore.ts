@@ -6,13 +6,14 @@ interface PlayerStore {
     isPlaying: boolean;
     queue: Song[];
     currentIndex: number;
+    audioRef: HTMLAudioElement | null;
 
     initializeQueue: (songs: Song[]) => void;
     playAlbum: (songs: Song[], startIndex: number) => void;
     setCurrentSong: (song: Song | null) => void;
     togglePlay: () => void;
-    PlayNext: () => void;
-    PlayPrevious: () => void;
+    playNext: () => void;
+    playPrevious: () => void;
 }
 
 export const usePlayerStore = create<PlayerStore>((set, get) => ({
@@ -20,6 +21,7 @@ export const usePlayerStore = create<PlayerStore>((set, get) => ({
     isPlaying: false,
     queue: [],
     currentIndex: -1,
+    audioRef: null,
 
     initializeQueue: (songs) => {
         set({
@@ -59,7 +61,7 @@ export const usePlayerStore = create<PlayerStore>((set, get) => ({
         set({ isPlaying: willStartPlaying });
     },
 
-    PlayNext: () => {
+    playNext: () => {
         const { currentIndex, queue } = get();
         const nextIndex = currentIndex + 1;
 
@@ -78,7 +80,7 @@ export const usePlayerStore = create<PlayerStore>((set, get) => ({
 
     },
 
-    PlayPrevious: () => {
+    playPrevious: () => {
         const { currentIndex, queue } = get();
         const prevIndex = currentIndex - 1;
 
